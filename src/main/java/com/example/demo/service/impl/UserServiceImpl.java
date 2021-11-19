@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfo userRegister(RegisterRequest registerRequest) {
         UserInfo userInfo = userInfoDao.selectByUserName(registerRequest.getUserName());
-        if (userInfo != null) {
+        if (!userInfo.getUserName().equals(registerRequest.getUserName())) {
             BeanUtils.copyProperties(registerRequest, userInfo);
             Integer id = userInfoDao.insertAndGetId(userInfo);
             if (id != null) {
