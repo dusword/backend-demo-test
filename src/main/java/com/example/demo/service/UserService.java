@@ -7,6 +7,7 @@ import com.example.demo.result.BaseResult;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
@@ -14,5 +15,5 @@ import javax.servlet.http.HttpSession;
 public interface UserService {
     BaseResult userRegister(RegisterRequest registerRequest);
 
-    BaseResult userLogin(LoginRequest loginRequest, HttpSession session);
+    BaseResult userLogin(LoginRequest loginRequest, HttpServletRequest httpServletRequest);
 }
