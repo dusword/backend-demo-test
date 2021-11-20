@@ -3,6 +3,7 @@ package com.example.demo.domain.request.userRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.NonNull;
 
 /**
  * @author :LiXiangJie
@@ -15,12 +16,14 @@ public class LoginRequest {
     /**
      * 用户名
      */
-    @ApiModelProperty(value="用户名")
+    @NonNull
+    @ApiModelProperty(value="用户名",example = "lixiangjie")
     private String userName;
 
     /**
      * 用户密码
      */
-    @ApiModelProperty(value="用户密码")
+    @NonNull
+    @ApiModelProperty(value="用户密码",example = "123456")
     private String userPassword;
 }
