@@ -17,14 +17,12 @@ public class RegisterRequest {
      * 用户名
      */
     @ApiModelProperty(value="用户名",example = "lixiangjie")
-    @NonNull
     private String userName;
 
     /**
      * 用户密码
      */
     @ApiModelProperty(value="用户密码",example = "123456")
-    @NonNull
     private String userPassword;
 
     /**

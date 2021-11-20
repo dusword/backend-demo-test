@@ -16,14 +16,12 @@ public class LoginRequest {
     /**
      * 用户名
      */
-    @NonNull
     @ApiModelProperty(value="用户名",example = "lixiangjie")
     private String userName;
 
     /**
      * 用户密码
      */
-    @NonNull
     @ApiModelProperty(value="用户密码",example = "123456")
     private String userPassword;
 }

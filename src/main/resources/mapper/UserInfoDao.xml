@@ -63,6 +63,9 @@
             <if test="userEmail != null">
                 user_email,
             </if>
+            <if test="craeteDate != null">
+                craete_date,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="userName != null">
@@ -79,6 +82,9 @@
             </if>
             <if test="userEmail != null">
                 #{userEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="craeteDate != null">
+                #{craeteDate,jdbcType=TIMESTAMP},
             </if>
         </trim>
     </insert>

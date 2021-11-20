@@ -5,6 +5,7 @@ import com.example.demo.dao.UserInfoDao;
 import com.example.demo.domain.model.UserInfo;
 import com.example.demo.domain.request.userRequest.LoginRequest;
 import com.example.demo.domain.request.userRequest.RegisterRequest;
+import com.example.demo.result.BaseResult;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * @author :LiXiangJie
@@ -27,35 +29,36 @@ public class UserServiceImpl implements UserService {
     UserInfoDao userInfoDao;
 
     @Override
-    public UserInfo userRegister(RegisterRequest registerRequest) {
-        UserInfo userInfo = userInfoDao.selectByUserName(registerRequest.getUserName());
-        if (!userInfo.getUserName().equals(registerRequest.getUserName())) {
+    public BaseResult userRegister(RegisterRequest registerRequest) {
+        UserInfo userInfo = new UserInfo();
+        if (userInfoDao.selectByUserName(registerRequest.getUserName()) == null) {
             BeanUtils.copyProperties(registerRequest, userInfo);
+            userInfo.setCraeteDate(new Date());
             Integer id = userInfoDao.insertAndGetId(userInfo);
             if (id != null) {
-                log.info("用户： "+id+" 注册成功");
-                return userInfoDao.selectByPrimaryKey(id);
+                log.info("用户： " + id + " 注册成功");
+                return BaseResult.ok().data("userInfo",userInfoDao.selectByPrimaryKey(id));
             }
             log.error("注册失败");
-            return new UserInfo();
+            return BaseResult.error().message("注册失败");
         }
         log.error("用户名重复");
-        return new UserInfo();
+        return BaseResult.error().message("用户名重复");
     }
 
     @Override
-    public UserInfo userLogin(LoginRequest loginRequest) {
+    public BaseResult userLogin(LoginRequest loginRequest) {
         log.info("开始登录");
         UserInfo userInfo = userInfoDao.selectByUserName(loginRequest.getUserName());
         if (userInfo != null) {
             if (loginRequest.getUserPassword().equals(userInfo.getUserPassword())) {
-                log.info("用户id： "+userInfo.getId()+" 登陆成功");
-                return userInfo;
+                log.info("用户id： " + userInfo.getId() + " 登陆成功");
+                return BaseResult.ok().message("登陆成功").data("userInfo",userInfo);
             }
             log.error("密码错误");
-            return new UserInfo();
+            return BaseResult.error().message("密码错误");
         }
         log.error("用户不存在");
-        return new UserInfo();
+        return BaseResult.error().message("用户不存在");
     }
 }

@@ -22,13 +22,13 @@ public class UserController {
     @ApiOperation(value="注册接口", notes="发送注册请求", produces="application/json")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     BaseResult userRegister(@RequestBody RegisterRequest registerRequest){
-        return BaseResult.ok().message("请求成功").data("UserInfo",userService.userRegister(registerRequest));
+        return userService.userRegister(registerRequest);
     }
 
     @ApiOperation(value="登录接口", notes="发送登录请求", produces="application/json")
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     BaseResult userLogin(@RequestBody LoginRequest LoginRequest){
-        return BaseResult.ok().message("请求成功").data("UserInfo",userService.userLogin(LoginRequest));
+        return userService.userLogin(LoginRequest);
     }
 
 }
