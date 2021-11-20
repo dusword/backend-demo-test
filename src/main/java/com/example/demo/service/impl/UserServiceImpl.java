@@ -1,20 +1,18 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dao.LoginRecordDao;
 import com.example.demo.dao.UserInfoDao;
 import com.example.demo.domain.model.UserInfo;
 import com.example.demo.domain.request.userRequest.LoginRequest;
 import com.example.demo.domain.request.userRequest.RegisterRequest;
 import com.example.demo.result.BaseResult;
 import com.example.demo.service.UserService;
+import com.example.demo.utils.IpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 /**
@@ -54,7 +52,7 @@ public class UserServiceImpl implements UserService {
         UserInfo userInfo = userInfoDao.selectByUserName(loginRequest.getUserName());
         if (userInfo != null) {
             if (loginRequest.getUserPassword().equals(userInfo.getUserPassword())) {
-                log.info("用户id： " + userInfo.getId() + " 登陆成功");
+                log.info("用户id： " + userInfo.getId() + " 登陆成功,登录ip: "+ IpUtil.getIpAddr(httpServletRequest));
                 httpServletRequest.getSession().setAttribute("userInfoId",userInfo.getId());
                 return BaseResult.ok().message("登陆成功").data("userInfo",userInfo);
             }
