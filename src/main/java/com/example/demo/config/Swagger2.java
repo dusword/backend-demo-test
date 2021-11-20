@@ -32,7 +32,7 @@ public class Swagger2 {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 // 页面标题
-                .title("Spring Boot 测试使用 Swagger2 构建RESTful API")
+                .title("后端接口 RESTful API")
                 // 创建人信息
                 .contact(new Contact("LiXiangJie",  " ",  "773983534@qq.com"))
                 // 版本号
