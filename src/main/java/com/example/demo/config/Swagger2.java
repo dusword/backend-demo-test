@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
