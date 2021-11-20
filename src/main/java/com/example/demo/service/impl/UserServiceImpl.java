@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 /**
@@ -47,12 +48,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResult userLogin(LoginRequest loginRequest) {
+    public BaseResult userLogin(LoginRequest loginRequest, HttpSession session) {
         log.info("开始登录");
         UserInfo userInfo = userInfoDao.selectByUserName(loginRequest.getUserName());
         if (userInfo != null) {
             if (loginRequest.getUserPassword().equals(userInfo.getUserPassword())) {
                 log.info("用户id： " + userInfo.getId() + " 登陆成功");
+                session.setAttribute("userInfoId",userInfo.getId());
                 return BaseResult.ok().message("登陆成功").data("userInfo",userInfo);
             }
             log.error("密码错误");

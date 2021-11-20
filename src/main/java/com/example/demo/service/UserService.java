@@ -7,10 +7,12 @@ import com.example.demo.result.BaseResult;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 
 @Service
 public interface UserService {
     BaseResult userRegister(RegisterRequest registerRequest);
 
-    BaseResult userLogin(LoginRequest loginRequest);
+    BaseResult userLogin(LoginRequest loginRequest, HttpSession session);
 }

@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Slf4j
 @RestController
 @RequestMapping("/user")
@@ -27,8 +29,8 @@ public class UserController {
 
     @ApiOperation(value="登录接口", notes="发送登录请求", produces="application/json")
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    BaseResult userLogin(@RequestBody LoginRequest LoginRequest){
-        return userService.userLogin(LoginRequest);
+    BaseResult userLogin(@RequestBody LoginRequest LoginRequest, HttpSession session){
+        return userService.userLogin(LoginRequest,session);
     }
 
 }
