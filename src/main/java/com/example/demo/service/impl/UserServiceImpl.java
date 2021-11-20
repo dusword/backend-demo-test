@@ -2,8 +2,8 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dao.UserInfoDao;
 import com.example.demo.domain.model.UserInfo;
-import com.example.demo.domain.request.userRequest.LoginRequest;
-import com.example.demo.domain.request.userRequest.RegisterRequest;
+import com.example.demo.domain.request.LoginRequest;
+import com.example.demo.domain.request.RegisterRequest;
 import com.example.demo.result.BaseResult;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.IpUtil;

@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.request.userRequest.LoginRequest;
-import com.example.demo.domain.request.userRequest.RegisterRequest;
+import com.example.demo.domain.request.LoginRequest;
+import com.example.demo.domain.request.RegisterRequest;
 import com.example.demo.result.BaseResult;
 import com.example.demo.service.UserService;
 import io.swagger.annotations.Api;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Slf4j
 @RestController

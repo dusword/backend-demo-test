@@ -1,7 +1,6 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.model.LoginRecord;
-import com.example.demo.domain.request.userRequest.RegisterRequest;
 import org.springframework.stereotype.Repository;
 
 
