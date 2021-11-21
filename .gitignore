@@ -29,3 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/blog-log.log
+/.mvn/

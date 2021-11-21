@@ -2,9 +2,10 @@ package com.example.demo.domain.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * user_info
@@ -47,7 +48,7 @@ public class UserInfo implements Serializable {
      * 注册手机号
      */
     @ApiModelProperty(value="注册手机号")
-    private Integer userPhoneNumber;
+    private String userPhoneNumber;
 
     /**
      * 邮箱地址

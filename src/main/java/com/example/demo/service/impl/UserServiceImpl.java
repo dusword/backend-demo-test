@@ -34,7 +34,8 @@ public class UserServiceImpl implements UserService {
         if (userInfoDao.selectByUserName(registerRequest.getUserName()) == null) {
             BeanUtils.copyProperties(registerRequest, userInfo);
             userInfo.setCraeteDate(new Date());
-            Integer id = userInfoDao.insertAndGetId(userInfo);
+            userInfoDao.insertAndGetId(userInfo);
+            Integer id =userInfo.getId();
             if (id != null) {
                 log.info("用户： " + id + " 注册成功");
                 return BaseResult.ok().data("userInfo",userInfoDao.selectByPrimaryKey(id));

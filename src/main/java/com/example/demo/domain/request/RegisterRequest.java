@@ -3,7 +3,6 @@ package com.example.demo.domain.request;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.NonNull;
 
 /**
  * @author :LiXiangJie
@@ -34,8 +33,8 @@ public class RegisterRequest {
     /**
      * 注册手机号
      */
-    @ApiModelProperty(value="注册手机号",example = "123456")
-    private Integer userPhoneNumber;
+    @ApiModelProperty(value="注册手机号",example = "13761717870")
+    private String userPhoneNumber;
 
     /**
      * 邮箱地址

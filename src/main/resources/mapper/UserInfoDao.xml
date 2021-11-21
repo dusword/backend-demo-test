@@ -7,7 +7,7 @@
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         <result column="user_password" jdbcType="VARCHAR" property="userPassword"/>
         <result column="user_nickname" jdbcType="VARCHAR" property="userNickname"/>
-        <result column="user_phone_number" jdbcType="INTEGER" property="userPhoneNumber"/>
+        <result column="user_phone_number" jdbcType="VARCHAR" property="userPhoneNumber"/>
         <result column="user_email" jdbcType="VARCHAR" property="userEmail"/>
         <result column="craete_date" jdbcType="TIMESTAMP" property="craeteDate"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
@@ -38,7 +38,7 @@
       user_nickname, user_phone_number, user_email, 
       craete_date, update_time)
     values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
-      #{userNickname,jdbcType=VARCHAR}, #{userPhoneNumber,jdbcType=INTEGER}, #{userEmail,jdbcType=VARCHAR}, 
+      #{userNickname,jdbcType=VARCHAR}, #{userPhoneNumber,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR},
       #{craeteDate,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
 
@@ -78,7 +78,7 @@
                 #{userNickname,jdbcType=VARCHAR},
             </if>
             <if test="userPhoneNumber != null">
-                #{userPhoneNumber,jdbcType=INTEGER},
+                #{userPhoneNumber,jdbcType=VARCHAR},
             </if>
             <if test="userEmail != null">
                 #{userEmail,jdbcType=VARCHAR},
@@ -131,7 +131,7 @@
                 #{userNickname,jdbcType=VARCHAR},
             </if>
             <if test="userPhoneNumber != null">
-                #{userPhoneNumber,jdbcType=INTEGER},
+                #{userPhoneNumber,jdbcType=VARCHAR},
             </if>
             <if test="userEmail != null">
                 #{userEmail,jdbcType=VARCHAR},
@@ -161,7 +161,7 @@
                 user_nickname = #{userNickname,jdbcType=VARCHAR},
             </if>
             <if test="userPhoneNumber != null">
-                user_phone_number = #{userPhoneNumber,jdbcType=INTEGER},
+                user_phone_number = #{userPhoneNumber,jdbcType=VARCHAR},
             </if>
             <if test="userEmail != null">
                 user_email = #{userEmail,jdbcType=VARCHAR},
@@ -181,7 +181,7 @@
       user_name = #{userName,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
       user_nickname = #{userNickname,jdbcType=VARCHAR},
-      user_phone_number = #{userPhoneNumber,jdbcType=INTEGER},
+      user_phone_number = #{userPhoneNumber,jdbcType=VARCHAR},
       user_email = #{userEmail,jdbcType=VARCHAR},
       craete_date = #{craeteDate,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
